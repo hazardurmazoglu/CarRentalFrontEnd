@@ -7,7 +7,7 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
 
 const routes: Routes = [
   {path:"", component:WelcomePageComponent},
-  {path:"cars", component:CarFilterComponent}
+  {path:"cars", component:CarComponent}
 ];
 
 @NgModule({

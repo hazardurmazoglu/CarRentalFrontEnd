@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePageComponent implements OnInit {
 
+  imagePath="../assets/frontpagebackground1.jpg";
   constructor() { }
 
   ngOnInit(): void {
