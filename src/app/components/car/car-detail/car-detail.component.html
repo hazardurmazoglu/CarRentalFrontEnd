@@ -1,5 +1,5 @@
 
-<table class="table">
+<!-- <table class="table">
     <thead>
         <tr>
             <th>Image</th>
@@ -13,14 +13,13 @@
     </thead>
     <tbody>
         <tr *ngFor="let carDetail of carDetails">
-            <!-- <td><img style="width:300px !important; height:200px !important;" src="{{imageUrl}}{{carDetail.imagePath}}" ></td> -->
             <td><img style="width:300px !important; height:200px !important;" src="{{imageUrl}}{{carDetail.imagePath}}" ></td>
             <td>{{carDetail.brandName}}</td>
             <td>{{carDetail.colorName}}</td>
             <td>{{carDetail.modelYear}}</td>
             <td>{{carDetail.dailyPrice}}</td>
         </tr>
-
+        
 
     </tbody>
 
@@ -28,4 +27,28 @@
 
 
 
-</table>
+</table> -->
+<div class="container">
+<div class="row">
+
+
+    <div class="col-md-6">
+        <app-car-filter></app-car-filter>
+    </div>
+    <div class="col-md-6">
+        <div *ngFor="let carDetail of carDetails" class="card"  style="width: 38rem;" >
+            <img class="card-img-top" style="width:606px !important; height:300px !important;" src="{{imageUrl}}{{carDetail.imagePath}}">
+            <div class="card-body">
+             <h5 class="card-title">{{carDetail.description}}</h5>
+            <p class="card-text">Choose "{{carDetail.description}}" and you will not make a bad choice.</p>
+            <a href="cars" class="btn btn-dark btn-outline-info">Rental Options</a>
+         </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+  
+  

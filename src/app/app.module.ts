@@ -9,6 +9,8 @@ import { CarComponent } from './components/car/car.component';
 import { CarDetailComponent } from './components/car/car-detail/car-detail.component';
 import { CarFilterComponent } from './components/car/car-filter/car-filter.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { BrandComponent } from './components/brand/brand.component';
+import { ColorComponent } from './components/color/color.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
     CarComponent,
     CarDetailComponent,
     CarFilterComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    BrandComponent,
+    ColorComponent
   ],
   imports: [
     BrowserModule,
