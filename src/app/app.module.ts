@@ -11,6 +11,8 @@ import { CarFilterComponent } from './components/car/car-filter/car-filter.compo
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
+import { VatAddedPipe } from './pipes/vat-added.pipe';
+import { CarInfoComponent } from './components/car/car-info/car-info.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ColorComponent } from './components/color/color.component';
     CarFilterComponent,
     WelcomePageComponent,
     BrandComponent,
-    ColorComponent
+    ColorComponent,
+    VatAddedPipe,
+    CarInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -36,12 +36,14 @@
         <app-car-filter></app-car-filter>
     </div>
     <div class="col-md-6">
+        <br>
         <div *ngFor="let carDetail of carDetails" class="card"  style="width: 38rem;" >
-            <img class="card-img-top" style="width:606px !important; height:300px !important;" src="{{imageUrl}}{{carDetail.imagePath}}">
+            <img class="card-img-top" style="width:606px !important; height:300px !important;" src="{{imageUrl}}{{carDetail.imagePath}}" [alt]="carDetail.description">
             <div class="card-body">
              <h5 class="card-title">{{carDetail.description}}</h5>
             <p class="card-text">Choose "{{carDetail.description}}" and you will not make a bad choice.</p>
-            <a href="cars" class="btn btn-dark btn-outline-info">Rental Options</a>
+            <btn routerLink="/cars/carinfo/{{carDetail.carId}}" class="btn btn-dark btn-outline-info"> > Details</btn>
+            
          </div>
         </div>
     </div>

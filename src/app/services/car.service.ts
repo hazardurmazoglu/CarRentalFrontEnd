@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { CarDetail } from '../models/cardetail';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,11 @@ export class CarService {
   apiUrl=environment.apiUrl;
 
   constructor(private httpClient:HttpClient) { }
+
+  getCarDetail(carId:number):Observable<SingleResponseModel<CarDetail>>{
+    let newPath= this.apiUrl+"cars/getcardetailbyid?carId="+"carId";
+    return this.httpClient.get<SingleResponseModel<CarDetail>>(newPath);
+  }
 
   getCarDetails():Observable<ListResponseModel<CarDetail>>{
     let newPath= this.apiUrl+"cars/getcardetails"
