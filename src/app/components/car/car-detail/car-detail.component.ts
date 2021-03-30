@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CarDetail } from 'src/app/models/cardetail';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
-
-  constructor() { }
+  imageUrl="../assets";
+  carDetails:CarDetail[]= [];
+  dataLoaded=false;
+  constructor(private carService:CarService) { }
 
   ngOnInit(): void {
+    this.getCarDetails();
   }
 
+  getCarDetails(){
+    this.carService.getCarDetails().subscribe(response=>{
+      this.carDetails = response.data;
+      this.dataLoaded = true;
+    })
+  }
 }
