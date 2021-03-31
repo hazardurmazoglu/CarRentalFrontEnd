@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/models/cardetail';
+import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -11,15 +12,18 @@ import { CarService } from 'src/app/services/car.service';
 export class CarInfoComponent implements OnInit {
   carDetailInfo:CarDetail;
   carDetailInfos:CarDetail[]=[];
+  carImages:CarImage[]=[];
+  imageUrl="../assets";
   dataLoaded=false;
   constructor(private carService:CarService, private activedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activedRoute.params.subscribe(param=>{
-      if(["carId"]){
-        this.getCarDetail(param["carId"]);
+    this.activedRoute.params.subscribe(params=>{
+      if(params["carId"]){
+        this.getCarDetail(params["carId"]);
+        this.getCarImagesById(params["carId"]);
       }
-      else{
+      else {
         this.getCarDetails();
       }
     })
@@ -38,6 +42,19 @@ export class CarInfoComponent implements OnInit {
       this.dataLoaded= true;
     })
   }
+  getCarImagesById(carId:number){
+    this.carService.getCarImagesById(carId).subscribe(response=>{
+      this.carImages=response.data;
+    })
+  }
+  getSliderClassName(index:Number){
+    if(index == 0){
+      return "carousel-item active";
+    } else {
+      return "carousel-item";
+    }
+  }
+  
   
 
 }

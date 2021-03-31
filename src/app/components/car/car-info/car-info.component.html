@@ -1,1 +1,70 @@
-<p>works</p>
+<div class="card" style="border-radius: 10px;">
+    <div class="card-body">
+        <div>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div *ngFor="let carImage of carImages; let i = index"  [class]="getSliderClassName(i)">
+                    <img src="{{imageUrl}}{{carImage.imagePath}}" class="d-block w-100" alt="..." style="width:1320px !important; height:600px !important;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 style="font-style: italic; font-size: x-large;">{{carDetailInfo.description}}</h5>
+                        <p>{{carDetailInfo.description}} will not let you down.</p>
+                      </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+              <table class="table m-1">
+                  <thead>
+                      <tr>
+                        <th scope="col" style="background-color:#212529; color:white; border-radius: 10px">
+                            Brand
+                          </th>
+                          <th  scope="col" style="background-color: #212529; color:white;  border-radius: 10px">
+                            Color
+                          </th>
+                          <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
+                            Model Year
+                          </th>
+                          <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
+                            Daily Price
+                          </th>
+                          <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
+                            Daily Price + VAT
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngIf="carDetailInfo">
+                        <td>{{ carDetailInfo.brandName }}</td>
+                        <td>{{ carDetailInfo.colorName }}</td>
+                        <td>{{ carDetailInfo.modelYear }}</td>
+                        <td>{{ carDetailInfo.dailyPrice | currency }}</td>
+                        <td>{{ carDetailInfo.dailyPrice | vatAdded:8 | currency }}</td>
+                        <td>
+                            <button routerLink="/rental/{{carDetailInfo.carId}}" type="button" aria-current="true"
+                            class="btn btn-dark btn-outline-info float-end">
+                            Rental Options
+                          </button> 
+                            
+                            <button routerLink="/cars" type="button" aria-current="true"
+                            class="btn btn-dark btn-outline-warning float-end">
+                            Get Back
+                            </button>
+                        </td>
+      
+                      </tr>
+                  </tbody>
+              </table>
+        </div>
+
+    </div>
+
+</div>

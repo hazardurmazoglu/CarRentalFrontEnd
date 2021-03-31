@@ -28,7 +28,7 @@
 
 
 </table> -->
-<div class="container">
+<!-- <div class="container">
 <div class="row">
 
 
@@ -48,6 +48,42 @@
         </div>
     </div>
 </div>
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+             <app-car-filter></app-car-filter>
+        </div>
+        <div class="col-md-8">
+            <br>
+         <table class="table m-2">
+             <thead>
+                    <tr>
+                        <th scope="col" style="background-color:#212529; color:white; border-radius: 10px">Image</th>
+                        <th scope="col" style="background-color:#212529; color:white; border-radius: 10px">Brand</th>
+                        <th scope="col" style="background-color:#212529; color:white; border-radius: 10px">Color</th>
+                        <th scope="col" style="background-color:#212529; color:white; border-radius: 10px">Model Year</th>
+                        <th scope="col" style="background-color:#212529; color:white; border-radius: 10px">Findex Score</th>
+                        <th></th>
+                    </tr>
+             </thead>
+             <tbody>    
+                    <tr *ngFor="let carDetail of carDetails">
+                        <td><img src="" alt="Photo"></td>
+                        <td>{{carDetail.description}}</td>
+                        <td>{{carDetail.colorName}}</td>
+                        <td>{{carDetail.modelYear}}</td>
+                        <td>Findex?</td>
+                        <button routerLink="/cars/carinfo/{{carDetail.carId}}" type="button" aria-current="true"
+                        style="background: #212529;" class="btn  btn-outline-info float-end">
+                            > Details
+                            </button>
+                    </tr>
+             </tbody>
+         </table>
+        </div>
+    </div>
 </div>
 
 

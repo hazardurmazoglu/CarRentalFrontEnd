@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CarDetail } from 'src/app/models/cardetail';
+import { CarImage } from 'src/app/models/carImage';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { CarService } from 'src/app/services/car.service';
 
@@ -13,6 +14,7 @@ import { CarService } from 'src/app/services/car.service';
 export class CarDetailComponent implements OnInit {
   imageUrl="../assets";
   carDetails:CarDetail[]= [];
+  carImages:CarImage[]=[];
   dataLoaded=false;
   constructor(private carService:CarService,
      private activedRoute:ActivatedRoute) { }
@@ -52,6 +54,19 @@ export class CarDetailComponent implements OnInit {
     this.carService.getCarDetailsByBrandAndColor(brandId,colorId).subscribe(response=>{
       this.carDetails=response.data;
     })
+  }
+  getCarImagesById(carId:number){
+    this.carService.getCarImagesById(carId).subscribe(response=>{
+      this.carImages=response.data;
+      this.dataLoaded=true;
+    })
+  }
+  getSliderClassName(index:Number){
+    if(index == 0){
+      return "carousel-item active";
+    } else {
+      return "carousel-item";
+    }
   }
 
   

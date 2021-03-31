@@ -1,5 +1,6 @@
 <div class="col-md-4">
-    <ul class="list-group">
+    
+    <ul style="border-radius: 20px;" class="list-group">
         <br>
         <h3 style="border-radius: 30px;" routerLink="/cars" [class]="getAllCategoryClass()">All Cars</h3>
         <li class="list-group-item" style="font-size: larger;"><h5 style="border-radius: 20px;">Brands</h5></li>
@@ -9,7 +10,7 @@
          *ngFor="let brand of brands">{{brand.brandName}}</li>
     </ul>
     <br>
-    <ul class="list-group">
+    <ul style="border-radius: 20px;" class="list-group">
         <li class="list-group-item" style="font-size: larger;"><h5 style="border-radius: 20px;">Colors</h5></li>
         <li (click)="setCurrentColor(color)"
         routerLink="/cars/color/{{color.colorId}}"
