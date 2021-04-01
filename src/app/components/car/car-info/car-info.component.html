@@ -49,7 +49,7 @@
                         <td>{{ carDetailInfo.dailyPrice | currency }}</td>
                         <td>{{ carDetailInfo.dailyPrice | vatAdded:8 | currency }}</td>
                         <td>
-                            <button routerLink="/rental/{{carDetailInfo.carId}}" type="button" aria-current="true"
+                            <button routerLink="/rental/car/{{carDetailInfo.carId}}" type="button" aria-current="true"
                             class="btn btn-dark btn-outline-info float-end">
                             Rental Options
                           </button> 
