@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:"", component:WelcomePageComponent},
@@ -22,11 +23,11 @@ const routes: Routes = [
   {path:"cars/carinfo/:carId",component:CarInfoComponent},
   {path:"cars/brand/:brandId/color/:colorId",component:CarComponent},
   {path:"rental/car/:carId",component:RentalComponent},
-  {path:"addcar",component:CarAddComponent},
+  {path:"addcar",component:CarAddComponent, canActivate:[LoginGuard]},
   {path:"brands",component:BrandComponent},
   {path:"colors",component:ColorComponent},
-  {path:"addbrand",component:BrandAddComponent},
-  {path:"addcolor",component:ColorAddComponent},
+  {path:"addbrand",component:BrandAddComponent, canActivate:[LoginGuard]},
+  {path:"addcolor",component:ColorAddComponent, canActivate:[LoginGuard]},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent}
 ];

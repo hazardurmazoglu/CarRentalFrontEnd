@@ -12,8 +12,10 @@
     
         </ul>
         <form class="d-flex">
-          <button routerLink="/register" class="btn " type="submit">Register</button> &nbsp;
-          <button routerLink="/login" class="btn " type="submit">Login</button>
+          <button  [style.display]="isAuthenticated()" routerLink="/register" class="btn " type="submit">Register</button>
+          <button  [style.display]="isAuthenticated()" routerLink="/login" class="btn " type="submit">Login</button>
+          <button  [style.display]=" logout " routerLink="/userinfo" class="btn" type="submit">My Info</button>
+          <button (click)="logOut()" [style.display]=" logout " style="font-size:20px;" routerLink="/" class="btn" type="submit">Log out</button>
         </form>
       </div>
     </div>

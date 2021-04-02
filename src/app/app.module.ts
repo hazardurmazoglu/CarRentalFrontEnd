@@ -23,6 +23,7 @@ import { ColorAddComponent } from './components/color/color-add/color-add.compon
 import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component'
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -56,7 +57,9 @@ import { RegisterComponent } from './components/register/register.component'
     })
     
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
