@@ -1,1 +1,68 @@
-<p>register works!</p>
+<body class="text-center">
+    <main class="form-signin">
+      <form [formGroup]="registerForm">
+        <img class="mb-4" [src]="imagePathLogo" alt="" width="200" height="200" />
+        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+        <br>
+       
+  
+        <div class="form-floating">
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput">Email address</label>
+        </div>
+        <br />
+        <div class="form-floating">
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input
+              formControlName="firstName"
+              type="text"
+              class="form-control"
+              id="firstName"
+              placeholder="First Name"
+            />
+            <label for="firstName">First Name</label>
+          </div>
+        <br>
+        <div class="form-floating">
+            <input
+              formControlName="lastName"
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="Last Name"
+            />
+            <label for="lastName">Last Name</label>
+          </div>
+
+
+  
+        <div class="checkbox mb-3">
+          <br />
+          <label>
+            <input type="checkbox" value="remember-me" /> Remember me
+          </label>
+        </div>
+        <button (click)="register()" class="w-100 btn btn-lg btn-primary" routerLink="">
+          Sign up
+        </button>
+        <p class="mt-5 mb-3 text-muted">&copy;2021</p>
+      </form>
+    </main>
+  </body>
+  

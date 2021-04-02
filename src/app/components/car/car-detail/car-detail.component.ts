@@ -13,6 +13,7 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarDetailComponent implements OnInit {
   imageUrl="../assets";
+  imagePathLogo="../assets/profilephoto.png"
   carDetails:CarDetail[]= [];
   carImages:CarImage[]=[];
   dataLoaded=false;

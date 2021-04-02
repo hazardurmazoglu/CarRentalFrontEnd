@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { LoginModel } from '../models/loginModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/tokenModel';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,13 @@ export class AuthService {
   constructor(private httpClient:HttpClient) { }
   
   login(loginModel:LoginModel){
-    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"auth/login",loginModel)
+    let newPath=this.apiUrl+"auth/login"
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath,loginModel)
+  }
+
+  register(registerModel:User){
+    let newPath=this.apiUrl+"auth/register";
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath,registerModel)
   }
   
   isAuthenticated(){

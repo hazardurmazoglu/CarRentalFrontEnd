@@ -77,7 +77,7 @@
              </thead>
              <tbody>    
                     <tr *ngFor="let carDetail of carDetails">
-                        <td><img src="" alt="Photo"></td>
+                        <td><img [src]="imagePathLogo" alt="Photo"></td>
                         <td>{{carDetail.description}}</td>
                         <td>{{carDetail.brandName}}</td>
                         <td>{{carDetail.colorName}}</td>
