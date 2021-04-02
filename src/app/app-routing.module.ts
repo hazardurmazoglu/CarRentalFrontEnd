@@ -9,6 +9,8 @@ import { CarInfoComponent } from './components/car/car-info/car-info.component';
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color/color-add/color-add.component';
 import { ColorComponent } from './components/color/color.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 
@@ -24,7 +26,9 @@ const routes: Routes = [
   {path:"brands",component:BrandComponent},
   {path:"colors",component:ColorComponent},
   {path:"addbrand",component:BrandAddComponent},
-  {path:"addcolor",component:ColorAddComponent}
+  {path:"addcolor",component:ColorAddComponent},
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent}
 ];
 
 @NgModule({
