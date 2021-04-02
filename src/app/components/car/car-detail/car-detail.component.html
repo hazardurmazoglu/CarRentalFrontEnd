@@ -53,7 +53,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-             <app-car-filter></app-car-filter>
+            <div>
+                <app-car-filter></app-car-filter>
+            </div>
+            <div>
+                <button routerLink="/addcar" class="btn-dark btn-outline-info">Add New Car</button>
+            </div>
         </div>
         <div class="col-md-8">
             <br>
@@ -79,8 +84,7 @@
                         <td>{{carDetail.modelYear}}</td>
                         <td>Findex?</td>
                         
-                        <button routerLink="/cars/carinfo/{{carDetail.carId}}" type="button" aria-current="true"
-                        style="background: #212529;" class="btn  btn-outline-info float-end">
+                        <button routerLink="/cars/carinfo/{{carDetail.carId}}" type="button" aria-current="true" class="btn">
                             > Details
                             </button>
                     </tr>

@@ -1,1 +1,22 @@
-<p>color works!</p>
+<div class="col-md-12">
+    <div class="col-md-2">
+       
+
+    </div>
+    <div >
+        <div class="col-md-10 float-end">
+            <div class="row md-4">
+                <div *ngFor="let color of colors" class="card text-dark bg-light mb-3" style="width: 18rem;">
+                    <img [src]="imagePathColorSpectrum" class="card-img-top" alt="GenericColorPhoto">
+                    <div class="card-body">
+                      <h5 class="card-title">{{color.colorName}}</h5>
+                      <p class="card-text"></p>
+                      <a routerLink="/cars/color/{{color.colorId}}" class="btn" >Show More</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+    </div>
+
+</div>
+

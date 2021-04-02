@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms"
 
 @Component({
   selector: 'app-rental',
@@ -8,10 +9,14 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./rental.component.css']
 })
 export class RentalComponent implements OnInit {
-
-  constructor(private activatedRoute:ActivatedRoute, private toastrService:ToastrService) { }
+  rentalAddForm: FormGroup;
+  constructor(private activatedRoute:ActivatedRoute, private toastrService:ToastrService, private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+  }
+
+  createRentalAddForm(){
+    
   }
 
 
