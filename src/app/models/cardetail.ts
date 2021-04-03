@@ -7,5 +7,6 @@ export interface CarDetail{
     modelYear:number;
     dailyPrice:number;
     description:string;
+    minFindexScore?:number;
 
 }

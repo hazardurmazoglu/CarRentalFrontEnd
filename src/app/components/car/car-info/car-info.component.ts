@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/models/cardetail';
 import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-car-info',
@@ -15,10 +16,10 @@ export class CarInfoComponent implements OnInit {
   carImages:CarImage[]=[];
   imageUrl="../assets";
   dataLoaded=false;
-  constructor(private carService:CarService, private activedRoute:ActivatedRoute) { }
+  constructor(private carService:CarService, private activatedRoute:ActivatedRoute,private userService:UserService) { }
 
   ngOnInit(): void {
-    this.activedRoute.params.subscribe(params=>{
+    this.activatedRoute.params.subscribe(params=>{
       if(params["carId"]){
         this.getCarDetail(params["carId"]);
         this.getCarImagesById(params["carId"]);
@@ -54,6 +55,9 @@ export class CarInfoComponent implements OnInit {
       return "carousel-item";
     }
   }
+  
+
+
   
   
 

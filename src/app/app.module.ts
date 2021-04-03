@@ -24,6 +24,9 @@ import { BrandAddComponent } from './components/brand/brand-add/brand-add.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component'
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UserComponent } from './components/user/user.component';
+import { UserinfoComponent } from './components/user/userinfo/userinfo.component';
+import { UserupdateComponent } from './components/user/userupdate/userupdate.component';
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ColorAddComponent,
     BrandAddComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponent,
+    UserinfoComponent,
+    UserupdateComponent
   ],
   imports: [
     BrowserModule,

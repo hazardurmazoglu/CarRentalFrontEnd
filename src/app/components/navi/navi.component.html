@@ -14,8 +14,17 @@
         <form class="d-flex">
           <button  [style.display]="isAuthenticated()" routerLink="/register" class="btn " type="submit">Register</button>
           <button  [style.display]="isAuthenticated()" routerLink="/login" class="btn " type="submit">Login</button>
-          <button  [style.display]=" logout " routerLink="/userinfo/userEmail?" class="btn" type="submit">My Info</button>
-          <button (click)="logOut()" [style.display]=" logout " style="font-size:20px;" routerLink="/" class="btn" type="submit">Log out</button>
+          <!-- <button  [style.display]=" logout " routerLink="/userinfo/{{getEmail()}}" class="btn" type="submit">My Info</button>
+          <button (click)="logOut()" [style.display]=" logout " style="font-size:20px;" routerLink="/" class="btn" type="submit">Log out</button> -->
+          <div [style.display]=" logout " class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Settings
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item btn" routerLink="/userinfo/{{getEmail()}}">My Info</a></li>
+              <li><a (click)="logOut()" class="dropdown-item btn" routerLink="/">Log out</a></li>
+            </ul>
+          </div>
         </form>
       </div>
     </div>

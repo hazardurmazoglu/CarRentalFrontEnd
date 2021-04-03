@@ -34,6 +34,9 @@
                             Model Year
                           </th>
                           <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
+                            Min. Findex Score
+                          </th>
+                          <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
                             Daily Price
                           </th>
                           <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
@@ -46,6 +49,7 @@
                         <td>{{ carDetailInfo.brandName }}</td>
                         <td>{{ carDetailInfo.colorName }}</td>
                         <td>{{ carDetailInfo.modelYear }}</td>
+                        <td>{{ carDetailInfo.minFindexScore }}</td>
                         <td>{{ carDetailInfo.dailyPrice | currency }}</td>
                         <td>{{ carDetailInfo.dailyPrice | vatAdded:8 | currency }}</td>
                         <td>

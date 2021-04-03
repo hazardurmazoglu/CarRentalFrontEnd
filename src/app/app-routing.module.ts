@@ -12,6 +12,8 @@ import { ColorComponent } from './components/color/color.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { UserinfoComponent } from './components/user/userinfo/userinfo.component';
+import { UserupdateComponent } from './components/user/userupdate/userupdate.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { LoginGuard } from './guards/login.guard';
 
@@ -29,7 +31,9 @@ const routes: Routes = [
   {path:"addbrand",component:BrandAddComponent, canActivate:[LoginGuard]},
   {path:"addcolor",component:ColorAddComponent, canActivate:[LoginGuard]},
   {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent}
+  {path:"register",component:RegisterComponent},
+  {path:"userinfo/:email",component:UserinfoComponent},
+  {path:"userinfo/update/:id",component:UserupdateComponent}
 ];
 
 @NgModule({

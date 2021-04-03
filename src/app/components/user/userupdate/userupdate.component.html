@@ -1,0 +1,48 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Update Your Info</h5> </div>
+            <div class="card-body">
+                <form [formGroup]="userUpdateForm">
+                    <div class="mb-3">
+                        <label for="firstName">First Name</label>
+                        <div class="form-group">
+                            <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="{{user.firstName}}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="colorId"> Last Name</label>
+                        <div class="form-group">
+                            <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="{{user.lastName}}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email"> Email </label>
+                        <div class="form-group">
+                            <input type="text" id="email" formControlName="email" class="form-control" placeholder="{{user.email}}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password"> Password </label>
+                        <div class="form-group">
+                            <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-4">
+                        <button routerLink="/userinfo/{{user.email}}"  class="btn "> Get Back </button>
+                    </div>
+                    <div class="col-md-8">
+                        <button (click)="userUpdate()"  class="btn "> Update </button>
+                    </div>
+                </div>
+                
+                
+            </div> 
+        </div>
+    </div>
+    
+</div>

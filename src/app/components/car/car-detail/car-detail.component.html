@@ -1,55 +1,4 @@
 
-<!-- <table class="table">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Brand</th>
-            <th>Color</th>
-            <th>Model Year</th>
-            <th>Daily Price</th>
-
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let carDetail of carDetails">
-            <td><img style="width:300px !important; height:200px !important;" src="{{imageUrl}}{{carDetail.imagePath}}" ></td>
-            <td>{{carDetail.brandName}}</td>
-            <td>{{carDetail.colorName}}</td>
-            <td>{{carDetail.modelYear}}</td>
-            <td>{{carDetail.dailyPrice}}</td>
-        </tr>
-        
-
-    </tbody>
-
-
-
-
-
-</table> -->
-<!-- <div class="container">
-<div class="row">
-
-
-    <div class="col-md-6">
-        <app-car-filter></app-car-filter>
-    </div>
-    <div class="col-md-6">
-        <br>
-        <div *ngFor="let carDetail of carDetails" class="card"  style="width: 38rem;" >
-            <img class="card-img-top" style="width:606px !important; height:300px !important;" src="{{imageUrl}}{{carDetail.imagePath}}" [alt]="carDetail.description">
-            <div class="card-body">
-             <h5 class="card-title">{{carDetail.description}}</h5>
-            <p class="card-text">Choose "{{carDetail.description}}" and you will not make a bad choice.</p>
-            <btn routerLink="/cars/carinfo/{{carDetail.carId}}" class="btn btn-dark btn-outline-info"> > Details</btn>
-            
-         </div>
-        </div>
-    </div>
-</div>
-</div> -->
-
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -82,7 +31,7 @@
                         <td>{{carDetail.brandName}}</td>
                         <td>{{carDetail.colorName}}</td>
                         <td>{{carDetail.modelYear}}</td>
-                        <td>Findex?</td>
+                        <td>{{carDetail.minFindexScore}}</td>
                         
                         <button routerLink="/cars/carinfo/{{carDetail.carId}}" type="button" aria-current="true" class="btn">
                             > Details

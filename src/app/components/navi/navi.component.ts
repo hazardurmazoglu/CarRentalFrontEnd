@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navi',
@@ -8,7 +11,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NaviComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  user:User;
+  dataLoaded=false;
+  constructor(private authService:AuthService, private userService:UserService,private activatedRoute:ActivatedRoute) { }
   logout="none"
   login="#"
   ngOnInit(): void {
@@ -33,6 +38,14 @@ export class NaviComponent implements OnInit {
 
     
   }
+
+  getEmail(){
+    let email= localStorage.getItem("email");
+    return email;
+  }
+
+
+
   
 
 }
