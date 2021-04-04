@@ -1,0 +1,22 @@
+<br>
+<h2 style="font-style: italic;" >Update Color</h2>
+<br>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            
+            <th>Color Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let color of colors">
+                    <td>{{color.colorName}}</td>
+              
+                    <td><button  routerLink="/colorupdate/{{color.colorId}}" class="btn float-end">Update</button></td>
+          
+            
+        </tr>    
+    </tbody>
+</table>
+<button routerLink="/admin" class="btn float-end">Get Back</button>

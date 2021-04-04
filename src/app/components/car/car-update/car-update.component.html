@@ -1,0 +1,31 @@
+<br>
+<h2 style="font-style: italic;" >Update Car</h2>
+<br>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            
+            <th>Car Description</th>
+            <th>Brand Name</th>
+            <th>Color Name</th>
+            <th>Daily Price</th>
+            <th>Min. Findex Score</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let carDetail of carDetails">
+                    <td>{{carDetail.description}}</td>
+                    <td>{{carDetail.brandName}}</td>
+                    <td>{{carDetail.colorName}}</td>
+                    <td>{{carDetail.dailyPrice}}</td>
+                    <td>{{carDetail.minFindexScore}}</td>
+                    <td><button  routerLink="/carupdate/{{carDetail.carId}}" class="btn float-end">Update Car</button>
+                        <button  routerLink="/carimageoptions/{{carDetail.carId}}" class="btn float-end">Car Image Options</button></td>
+                    <td></td>
+            
+        </tr>    
+    </tbody>
+</table>
+<button routerLink="/admin" class="btn float-end">Get Back</button>

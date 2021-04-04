@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { User } from '../models/user';
@@ -32,6 +33,10 @@ export class UserService {
   getClaims(user:User):Observable<SingleResponseModel<User>>{
     let newPath= this.apiUrl+"users/getclaims";
     return this.httpClient.get<SingleResponseModel<User>>(newPath)
+  }
+  getAllUsers():Observable<ListResponseModel<User>>{
+    let newPath= this.apiUrl+"users/getall";
+    return this.httpClient.get<ListResponseModel<User>>(newPath);
   }
 
 

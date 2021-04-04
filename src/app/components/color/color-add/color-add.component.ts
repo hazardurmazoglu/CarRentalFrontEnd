@@ -25,8 +25,8 @@ export class ColorAddComponent implements OnInit {
 
   add(){
     if(this.colorAddForm.valid){
-      let carModel = Object.assign({},this.colorAddForm.value)
-      this.colorService.add(carModel).subscribe(response=>{
+      let colorModel = Object.assign({},this.colorAddForm.value)
+      this.colorService.add(colorModel).subscribe(response=>{
 
       this.toastrService.success(response.message,"Succeed")
       }, responseError=>{

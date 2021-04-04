@@ -41,6 +41,7 @@ export class UserupdateComponent implements OnInit {
       firstName:["",Validators.required],
       lastName:["",Validators.required],
       email:["",Validators.required],
+      findexScore:["",Validators.required],
       password:["",Validators.required]
 
     })

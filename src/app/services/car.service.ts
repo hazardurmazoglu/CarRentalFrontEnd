@@ -48,4 +48,14 @@ export class CarService {
   add(car:Car):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/add",car)
   }
+  addCarImage(carImage:CarImage):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"carImages/add",carImage);
+  }
+  deleteCarImage(carImage:CarImage):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"carImages/delete",carImage);
+  }
+  deleteCarImageById(carImageId:number):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"carImages/delete/?carImageId="+carImageId,carImageId);
+  }
+
 }

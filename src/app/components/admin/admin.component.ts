@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
   }
 
   isAdmin(){
-    
+      //because of angular binding, it always creates an infinite loop but works, but for now it is disabled.
     this.getbyEmail(localStorage.getItem("email"));
     this.getClaims(this.user);
     console.log("moruk");

@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Update Color</h5> </div>
+            <div class="card-body">
+                <form [formGroup]="colorUpdateForm">
+                    <div class="mb-3">
+                        <label for="colorName">Color Name</label>
+                        <div class="form-group">
+                            <input type="text" id="colorName" formControlName="colorName" class="form-control" placeholder="New Color Name"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-4">
+                        <button routerLink="/colorupdate"  class="btn btn-fill btn-dark btn-outline-danger "> Get Back </button>
+                    </div>
+                    <div class="col-md-8">
+                        <button (click)="colorUpdate()"  class="btn btn-fill btn-dark btn-outline-info float-end"> Update </button>
+                    </div>
+                </div>
+                
+                
+            </div> 
+        </div>
+    </div>
+    
+</div>

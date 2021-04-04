@@ -17,6 +17,7 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { CarInfoComponent } from './components/car/car-info/car-info.component';
 import { RentalComponent } from './components/rental/rental.component';
 
+
 import {ToastrModule} from "ngx-toastr";
 import { CarAddComponent } from './components/car/car-add/car-add.component';
 import { ColorAddComponent } from './components/color/color-add/color-add.component';
@@ -29,6 +30,16 @@ import { UserinfoComponent } from './components/user/userinfo/userinfo.component
 import { UserupdateComponent } from './components/user/userupdate/userupdate.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ColorUpdateComponent } from './components/color/color-update/color-update.component';
+import { ColorUpdateFormComponent } from './components/color/color-update/color-update-form/color-update-form.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { BrandUpdateComponent } from './components/brand/brand-update/brand-update.component';
+import { BrandUpdateFormComponent } from './components/brand/brand-update/brand-update-form/brand-update-form.component';
+import { CarUpdateComponent } from './components/car/car-update/car-update.component';
+import { CarUpdateFormComponent } from './components/car/car-update/car-update-form/car-update-form.component';
+import { CarImageOptionsComponent } from './components/car/car-update/car-image-options/car-image-options.component';
+import { AddCarImageComponent } from './components/car/car-update/car-image-options/add-car-image/add-car-image.component';
+import { DeleteCarImageComponent } from './components/car/car-update/car-image-options/delete-car-image/delete-car-image.component';
 
 
 @NgModule({
@@ -53,7 +64,17 @@ import { FooterComponent } from './components/footer/footer.component';
     UserinfoComponent,
     UserupdateComponent,
     AdminComponent,
-    FooterComponent
+    FooterComponent,
+    ColorUpdateComponent,
+    ColorUpdateFormComponent,
+    CustomerComponent,
+    BrandUpdateComponent,
+    BrandUpdateFormComponent,
+    CarUpdateComponent,
+    CarUpdateFormComponent,
+    CarImageOptionsComponent,
+    AddCarImageComponent,
+    DeleteCarImageComponent
   ],
   imports: [
     BrowserModule,

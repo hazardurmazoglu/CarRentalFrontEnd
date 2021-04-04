@@ -25,8 +25,9 @@ export class BrandAddComponent implements OnInit {
 
   add(){
     if(this.brandAddForm.valid){
-      let carModel = Object.assign({},this.brandAddForm.value)
-      this.brandService.add(carModel).subscribe(response=>{
+      let brandModel = Object.assign({},this.brandAddForm.value)
+      // brandModel.id=brandId;
+      this.brandService.add(brandModel).subscribe(response=>{
 
       this.toastrService.success(response.message,"Succeed")
       }, responseError=>{
