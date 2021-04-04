@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
 import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { CarAddComponent } from './components/car/car-add/car-add.component';
@@ -15,6 +16,7 @@ import { RentalComponent } from './components/rental/rental.component';
 import { UserinfoComponent } from './components/user/userinfo/userinfo.component';
 import { UserupdateComponent } from './components/user/userupdate/userupdate.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -33,7 +35,8 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"userinfo/:email",component:UserinfoComponent},
-  {path:"userinfo/update/:id",component:UserupdateComponent}
+  {path:"userinfo/update/:id",component:UserupdateComponent},
+  {path:"admin",component:AdminComponent}
 ];
 
 @NgModule({

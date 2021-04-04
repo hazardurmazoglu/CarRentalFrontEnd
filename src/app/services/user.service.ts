@@ -29,6 +29,12 @@ export class UserService {
     return this.httpClient.post<ResponseModel>(newPath,user);
   }
 
+  getClaims(user:User):Observable<SingleResponseModel<User>>{
+    let newPath= this.apiUrl+"users/getclaims";
+    return this.httpClient.get<SingleResponseModel<User>>(newPath)
+  }
+
+
 
 
 

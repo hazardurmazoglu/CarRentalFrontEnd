@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,13 +14,14 @@ export class NaviComponent implements OnInit {
 
   user:User;
   dataLoaded=false;
-  constructor(private authService:AuthService, private userService:UserService,private activatedRoute:ActivatedRoute) { }
+  constructor(private authService:AuthService, private userService:UserService,private activatedRoute:ActivatedRoute,private localStorageService:LocalstorageService) { }
   logout="none"
   login="#"
   ngOnInit(): void {
   }
 
   isAuthenticated(){
+    console.log("naviloop")
     if(this.authService.isAuthenticated()){
       this.logout="#";
       return this.login ="none";
@@ -31,8 +33,8 @@ export class NaviComponent implements OnInit {
   }
 
   logOut(){
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
+    this.localStorageService.removeItem("token");
+    this.localStorageService.removeItem("email");
     this.logout="none";
     this.login ="#"
 

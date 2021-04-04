@@ -6,6 +6,8 @@ import { CarDetail } from 'src/app/models/cardetail';
 import { CarImage } from 'src/app/models/carImage';
 import { UserService } from 'src/app/services/user.service';
 import { CarService } from 'src/app/services/car.service';
+import { User } from 'src/app/models/user';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-rental',
@@ -17,6 +19,7 @@ export class RentalComponent implements OnInit {
   carDetailInfo:CarDetail;
   carDetailInfos:CarDetail[]=[];
   carImages:CarImage[]=[];
+  user:User;
   imageUrl="../assets";
   imagePathCheckOut="./assets/checkout.png"
   dataLoaded=false;
@@ -24,7 +27,8 @@ export class RentalComponent implements OnInit {
      private toastrService:ToastrService,
       private formBuilder:FormBuilder,
       private userService:UserService,
-      private carService:CarService) { }
+      private carService:CarService,
+      private localStorageService:LocalstorageService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -36,6 +40,9 @@ export class RentalComponent implements OnInit {
   }
 
   createRentalAddForm(){
+    this.rentalAddForm=this.formBuilder.group({
+      
+    })
     
   }
 
@@ -57,4 +64,17 @@ export class RentalComponent implements OnInit {
       return "carousel-item";
     }
   }
+  getEmail(){
+    let email= localStorage.getItem("email");
+    return email;
+  }
+
+  getByEmail(email){
+    this.userService.getbyEmail(email).subscribe(response=>{
+      this.user = response.data;
+      this.dataLoaded=true;
+    })
+  }
+
+
 }

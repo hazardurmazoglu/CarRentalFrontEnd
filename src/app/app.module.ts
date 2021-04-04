@@ -27,6 +27,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { UserComponent } from './components/user/user.component';
 import { UserinfoComponent } from './components/user/userinfo/userinfo.component';
 import { UserupdateComponent } from './components/user/userupdate/userupdate.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { UserupdateComponent } from './components/user/userupdate/userupdate.com
     RegisterComponent,
     UserComponent,
     UserinfoComponent,
-    UserupdateComponent
+    UserupdateComponent,
+    AdminComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

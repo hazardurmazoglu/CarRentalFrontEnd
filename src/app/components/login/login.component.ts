@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators,FormBuilder} from "@angular/forms";
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,10 @@ export class LoginComponent implements OnInit {
   imagePathLogo="../assets/profilephoto.png"
 
   loginForm:FormGroup;
-  constructor(private formBuilder:FormBuilder, private authService:AuthService, private toastrService:ToastrService) { }
+  constructor(private formBuilder:FormBuilder,
+     private authService:AuthService,
+      private toastrService:ToastrService,
+      private localStorageService:LocalstorageService) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -34,7 +38,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("email",this.loginForm.value.email)
       this.authService.login(loginModel).subscribe(response=>{
         this.toastrService.info(response.message)
-        localStorage.setItem("token",response.data.token)
+      localStorage.setItem("token",response.data.token)
       },responseError=>{
         // console.log(responseError)
         this.toastrService.error(responseError.error)
