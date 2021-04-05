@@ -1,75 +1,140 @@
-<div class="card" style="border-radius: 10px;">
-    <div class="card-body">
-        <div>
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div *ngFor="let carImage of carImages; let i = index"  [class]="getSliderClassName(i)">
-                    <img src="{{imageUrl}}{{carImage.imagePath}}" class="d-block w-100" alt="..." style="width:1320px !important; height: 550px !important;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 style="font-style: italic; font-size: x-large;">{{carDetailInfo.description}}</h5>
-                        <p>{{carDetailInfo.description}} will not let you down.</p>
-                      </div>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-
-              <table class="table m-1">
-                  <thead>
-                      <tr>
-                        <th scope="col" style="background-color:#212529; color:white; border-radius: 10px">
-                            Brand
-                          </th>
-                          <th  scope="col" style="background-color: #212529; color:white;  border-radius: 10px">
-                            Color
-                          </th>
-                          <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
-                            Model Year
-                          </th>
-                          <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
-                            Min. Findex Score
-                          </th>
-                          <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
-                            Daily Price
-                          </th>
-                          <th scope="col" style="background-color: #212529; color:white; border-radius: 10px">
-                            Daily Price + VAT
-                          </th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngIf="carDetailInfo">
-                        <td>{{ carDetailInfo.brandName }}</td>
-                        <td>{{ carDetailInfo.colorName }}</td>
-                        <td>{{ carDetailInfo.modelYear }}</td>
-                        <td>{{ carDetailInfo.minFindexScore }}</td>
-                        <td>{{ carDetailInfo.dailyPrice | currency }}</td>
-                        <td>{{ carDetailInfo.dailyPrice | vatAdded:8 | currency }}</td>
-                        <td>
-                            
-                            <button routerLink="/cars" type="button" aria-current="true"
-                            class="btn btn-dark btn-outline-warning float-end">
-                            Get Back
-                            </button>
-                        </td>
-      
-                      </tr>
-                  </tbody>
-              </table>
-    
+<div class="card" style="border-radius: 10px">
+  <div class="card-body">
+    <div>
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div
+            *ngFor="let carImage of carImages; let i = index"
+            [class]="getSliderClassName(i)"
+          >
+            <img
+              src="{{ imageUrl }}{{ carImage.imagePath }}"
+              class="d-block w-100"
+              alt="..."
+              style="width: 1320px !important; height: 550px !important"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5 style="font-style: italic; font-size: x-large">
+                {{ carDetailInfo.description }}
+              </h5>
+              <p>{{ carDetailInfo.description }} will not let you down.</p>
+            </div>
+          </div>
         </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
 
+      <table class="table m-1">
+        <thead>
+          <tr>
+            <th
+              scope="col"
+              style="
+                background-color: #212529;
+                color: white;
+                border-radius: 10px;
+              "
+            >
+              Brand
+            </th>
+            <th
+              scope="col"
+              style="
+                background-color: #212529;
+                color: white;
+                border-radius: 10px;
+              "
+            >
+              Color
+            </th>
+            <th
+              scope="col"
+              style="
+                background-color: #212529;
+                color: white;
+                border-radius: 10px;
+              "
+            >
+              Model Year
+            </th>
+            <th
+              scope="col"
+              style="
+                background-color: #212529;
+                color: white;
+                border-radius: 10px;
+              "
+            >
+              Min. Findex Score
+            </th>
+            <th
+              scope="col"
+              style="
+                background-color: #212529;
+                color: white;
+                border-radius: 10px;
+              "
+            >
+              Daily Price
+            </th>
+            <th
+              scope="col"
+              style="
+                background-color: #212529;
+                color: white;
+                border-radius: 10px;
+              "
+            >
+              Daily Price + VAT
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="carDetailInfo">
+            <td>{{ carDetailInfo.brandName }}</td>
+            <td>{{ carDetailInfo.colorName }}</td>
+            <td>{{ carDetailInfo.modelYear }}</td>
+            <td>{{ carDetailInfo.minFindexScore }}</td>
+            <td>{{ carDetailInfo.dailyPrice | currency }}</td>
+            <td>{{ carDetailInfo.dailyPrice | vatAdded: 8 | currency }}</td>
+            <td>
+              <button
+                routerLink="/cars"
+                type="button"
+                aria-current="true"
+                class="btn btn-dark btn-outline-warning float-end"
+              >
+                Get Back
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
+  </div>
 </div>
-<div>
+<!-- <div>
     <body class="bg-light">
     
         <div class="container">
@@ -235,4 +300,448 @@
           </footer>
         </div>
           </body>
+</div> -->
+<div>
+  <!-- <div class="d-grid gap-2">
+    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#rentModal">
+      Rent It
+    </button>
+  </div>
+  
+  <div *ngIf="isLogOK()" class="modal fade" id="rentModal" tabindex="-1" aria-labelledby="rentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h5 class="modal-title" id="rentModalLabel">
+            Rent
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <div class="modal-body">
+  
+          <label for="dailyPrice" class="col-4 col-form-label">Daily Price:</label>
+          <div class="form-group row mb-2">
+            <div class="col-8">
+              <input id="dailyPrice" type="text" disabled="disabled" class="form-control"
+                [value]="carDetailInfo.dailyPrice | currency " />
+            </div>
+          </div>
+  
+  
+          <label for="rentDate" class="col-4 col-form-label">Rent Date:</label>
+          <div class="form-group row mb-2">
+            <div class="col-8">
+              <input class="form-control" min="{{ getDate(1) }}" value="{{ getDate(1) }}" type="date"
+                [(ngModel)]="rentDate" />
+            </div>
+          </div>
+  
+          <label for="returnDate" class="col-4 col-form-label">Return Date:</label>
+          <div class="form-group row">
+            <div class="col-8">
+              <input class="form-control" type="date" min="{{ getDate(2) }}" value="{{ getDate(2) }}"
+                [(ngModel)]="returnDate" />
+            </div>
+          </div>
+  
+        </div>
+  
+  
+        <div class="modal-footer">
+          <button data-bs-dismiss="modal" (click)="create()" type="button" class="btn btn-outline-success">
+            Rent
+          </button>
+        </div>
+  
+        
+      </div>
+    </div>
+  </div> -->
+  <div>
+    <body class="bg-light">
+      <div class="container">
+        <main>
+          <div class="py-5 text-center">
+            <img
+              class="d-block mx-auto mb-4"
+              [src]="imagePathCheckOut"
+              alt=""
+              width="90"
+              height="90"
+            />
+            <h2>Checkout form</h2>
+            <p class="lead"></p>
+          </div>
+
+          <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+              <h4
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <span class="text-primary">Your Request</span>
+                <span class="badge bg-primary rounded-pill">1</span>
+              </h4>
+              <ul class="list-group mb-3">
+                <li
+                  class="list-group-item d-flex justify-content-between lh-sm"
+                >
+                  <div>
+                    <h6 class="my-0">{{ carDetailInfo.description }}</h6>
+                    <small class="text-muted">Brief description</small>
+                  </div>
+                  <span class="text-muted"
+                    >{{ carDetailInfo.dailyPrice | vatAdded: 8 | currency }}
+                  </span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between bg-light"
+                >
+                  <div class="text-success">
+                    <h6 class="my-0">Promo code</h6>
+                    <small>Do you have any?</small>
+                  </div>
+                  <span class="text-success">−$5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>Total (USD)</span>
+                  <strong>?</strong>
+                </li>
+              </ul>
+
+              <form class="card p-2">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Promo code"
+                  />
+                  <button type="submit" class="btn btn-secondary">
+                    Redeem
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="col-md-7 col-lg-8">
+              <h4 class="mb-3">Required Informations</h4>
+              <hr>
+              <form class="needs-validation" novalidate>
+                <div class="row g-3">
+                  <label for="rentDate" class="col-4 col-form-label"
+                    >Rent Date:</label
+                  >
+                  <div class="form-group row mb-2">
+                    <div class="col-8">
+                      <input
+                        class="form-control"
+                        min="{{ getDate(1) }}"
+                        value="{{ getDate(1) }}"
+                        type="date"
+                        [(ngModel)]="rentDate"
+                        [ngModelOptions]="{standalone: true}"
+                      />
+                    </div>
+                  </div>
+
+                  <label for="returnDate" class="col-4 col-form-label"
+                    >Return Date:</label
+                  >
+                  <div class="form-group row">
+                    <div class="col-8">
+                      <input
+                        class="form-control"
+                        type="date"
+                        min="{{ getDate(2) }}"
+                        value="{{ getDate(2) }}"
+                        [(ngModel)]="returnDate"
+                        [ngModelOptions]="{standalone: true}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <hr />
+              </form>
+              
+              <form class="needs-validation" novalidate></form>
+                <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label for="firstName" class="form-label">First name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstName"
+                      [placeholder]="user.firstName"
+                      value=""
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Valid first name is required.
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <label for="lastName" class="form-label">Last name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lastName"
+                      [placeholder]="user.lastName"
+                      value=""
+                      required
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <label for="email" class="form-label"
+                      >Email <span class="text-muted"></span
+                    ></label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      [placeholder]="user.email"
+                    />
+                
+                  </div>
+
+                  <div class="col-md-5">
+                    <label for="country" class="form-label">Country*</label>
+                    <select class="form-select" id="country" required>
+                      <option value="">Choose...</option>
+                      <option>Turkey</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a valid country.
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="zip" class="form-label">Zip*</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="zip"
+                      placeholder=""
+                      required
+                    />
+                    <div class="invalid-feedback">Zip code required.</div>
+                  </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <h4 class="mb-3">Payment</h4>
+
+                <div class="my-3">
+                  <div class="form-check">
+                    <input
+                      id="credit"
+                      name="paymentMethod"
+                      type="radio"
+                      class="form-check-input"
+                      checked
+                      required
+                    />
+                    <label class="form-check-label" for="credit"
+                      >Credit card</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      id="debit"
+                      name="paymentMethod"
+                      type="radio"
+                      class="form-check-input"
+                      required
+                    />
+                    <label class="form-check-label" for="debit"
+                      >Debit card</label
+                    >
+                    
+                  </div>
+                </div>
+                <!-- <form [formGroup]="creditCardAddForm">
+                <div class="row gy-3">
+                  <div class="col-md-6">
+                    <label for="cc-name" class="form-label">Name on card</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-name"
+                      placeholder=""
+                      formControlName="nameOnTheCard"
+                    />
+                    
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="cc-number" class="form-label"
+                      >Credit card number</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-number"
+                      placeholder=""
+                      formControlName="cardNumber"
+                    />
+                    <div class="invalid-feedback">
+                      Credit card number is required
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="cc-expiration" class="form-label"
+                      >Expiration</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-expiration"
+                      placeholder="  /  "
+                      formControlName="expiration"
+                    />
+                    <div class="invalid-feedback">Expiration date required</div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="cc-cvv" class="form-label">CVV</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-cvv"
+                      placeholder=""
+                      formControlName="cvv"
+                    />
+                    <div class="invalid-feedback">Security code required</div>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="save-info"
+                    />
+                    <label class="form-check-label" for="save-info"
+                      >Save this information for next time</label
+                    >
+                    
+                  </div>
+                  
+                </div>
+              </form> -->
+              <form [formGroup]="creditCardAddForm">
+                <div *ngIf="creditCards.length>0" class="mb-3" style="width: 12rem;">
+                  <label for="customerCards">Your Credit Cards</label>
+                  <select class="form-control" (ngModelChange)="setCardInfos()" formControlName="userCard" required
+                    id="userCard" name="userCard">
+                    <option *ngFor="let card of creditCards" [value]="card.creditCardId" class="form-control">{{card.cardNumber}}
+                    </option>
+                  </select>
+                </div>
+        
+                <div class="form-floating mb-3">
+                  <input type="text" id="nameOnTheCard" class="form-control" placeholder="nameOnTheCard"
+                    formControlName="nameOnTheCard">
+                  <label for="nameOnTheCard">Name on the Card</label>
+                </div>
+        
+                <div class="form-floating mb-3">
+                  <input type="text" id="cardNumber" class="form-control" placeholder="cardNumber" formControlName="cardNumber">
+                  <label for="cardNumber">Card Number</label>
+                </div>
+        
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" id="expiration" class="form-control" placeholder="expiration"
+                        formControlName="expiration">
+                      <label for="expirationDate">Expiration</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" id="cvv" class="form-control" placeholder="cvv" formControlName="cvv">
+                      <label for="cvv">CVV</label>
+                    </div>
+                  </div>
+                  <div class="icons">
+                    <img src="https://img.icons8.com/color/48/000000/visa.png" />
+                    <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+                    <img src="https://img.icons8.com/color/48/000000/maestro.png" />
+                  </div>
+                </div>
+        
+                <!-- payment -->
+        
+        
+              </form>
+              
+
+                <hr class="my-4" />
+                <button (click)="totalPayment()" type="button" class="w-100 btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#rentModal">
+                  Checkout
+                </button>
+                <div *ngIf="isLogOK()" class="modal fade" id="rentModal" tabindex="-1" aria-labelledby="rentModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="rentModalLabel">
+                          Rent
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                
+                      <div class="modal-body">
+                
+                        <label for="dailyPrice" class="col-4 col-form-label">Daily Price:</label>
+                        <div class="form-group row mb-2">
+                          <div class="col-8">
+                            <input id="dailyPrice" type="text" disabled="disabled" class="form-control"
+                              [value]="carDetailInfo.dailyPrice | currency " />
+                          </div>
+                        </div>
+                        <label for="totalPrice" class="col-4 col-form-label">Total Price:</label>
+                        <div class="form-group row mb-2">
+                          <div class="col-8">
+                            <input id="totalPrice" type="text" disabled="disabled" class="form-control"
+                              [value]="amount | currency" />
+                          </div>
+                        </div>
+               
+
+
+                
+                      </div>
+                
+                
+                      <div class="modal-footer">
+                        <button  style="margin-right: 315px;" data-bs-dismiss="modal" routerLink="/rental/car/{{carDetailInfo.carId}}" type="button" class="btn btn-outline-danger">
+                          Get Back
+                        </button>
+                        <button data-bs-dismiss="modal" (click)="rent()" type="button" class="btn btn-outline-success float-end">
+                          Rent
+                        </button>
+
+                      </div>
+                
+                      
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+          </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+          <p class="mb-1">&copy; 2021 H.D. Car Rental</p>
+        </footer>
+      </div>
+    </body>
+  </div>
 </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/cardetail';
 import { CarImage } from 'src/app/models/carImage';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarService } from 'src/app/services/car.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,7 +18,10 @@ export class CarInfoComponent implements OnInit {
   carImages:CarImage[]=[];
   imageUrl="../assets";
   dataLoaded=false;
-  constructor(private carService:CarService, private activatedRoute:ActivatedRoute,private userService:UserService) { }
+  constructor(private carService:CarService, private activatedRoute:ActivatedRoute,private userService:UserService,
+    private authService:AuthService,
+    private toastrService:ToastrService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -53,6 +58,15 @@ export class CarInfoComponent implements OnInit {
       return "carousel-item active";
     } else {
       return "carousel-item";
+    }
+  }
+  isLogOK(){
+    if(this.authService.isAuthenticated()){
+      return true;
+    }else{
+      this.toastrService.error("You need to log in.")
+      this.router.navigate(["/login"])
+      return false;
     }
   }
   
