@@ -12,6 +12,7 @@
             <th>Min. Findex Score</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,9 +22,9 @@
                     <td>{{carDetail.colorName}}</td>
                     <td>{{carDetail.dailyPrice}}</td>
                     <td>{{carDetail.minFindexScore}}</td>
-                    <td><button  routerLink="/carupdate/{{carDetail.carId}}" class="btn float-end">Update Car</button>
-                        <button  routerLink="/carimageoptions/{{carDetail.carId}}" class="btn float-end">Car Image Options</button></td>
-                    <td></td>
+                    <td><button  routerLink="/carupdate/{{carDetail.carId}}" class="btn  ">Update Car</button> </td>
+                    <td> <button  routerLink="/carimageoptions/{{carDetail.carId}}" class="btn">Car Image Options</button> </td>
+                     <td><button  routerLink="/cardelete/{{carDetail.carId}}" class="btn  ">Delete Car</button> </td>
             
         </tr>    
     </tbody>

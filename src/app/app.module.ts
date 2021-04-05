@@ -40,6 +40,7 @@ import { CarUpdateFormComponent } from './components/car/car-update/car-update-f
 import { CarImageOptionsComponent } from './components/car/car-update/car-image-options/car-image-options.component';
 import { AddCarImageComponent } from './components/car/car-update/car-image-options/add-car-image/add-car-image.component';
 import { DeleteCarImageComponent } from './components/car/car-update/car-image-options/delete-car-image/delete-car-image.component';
+import { CarDeleteComponent } from './components/car/car-delete/car-delete.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { DeleteCarImageComponent } from './components/car/car-update/car-image-o
     CarUpdateFormComponent,
     CarImageOptionsComponent,
     AddCarImageComponent,
-    DeleteCarImageComponent
+    DeleteCarImageComponent,
+    CarDeleteComponent
   ],
   imports: [
     BrowserModule,

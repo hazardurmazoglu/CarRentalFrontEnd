@@ -1,0 +1,34 @@
+<table class="table">
+    <thead>
+       <tr>
+           <th>Car Id</th>
+           <th>Brand Id</th>
+           <th>Color Id</th>
+           <th>Min. Findex Score</th>
+           <th>Model Year</th>
+           <th>Daily Price</th>
+           <th>Description</th>
+       </tr>
+        
+    </thead>
+    <tbody>
+        <tr *ngIf="car">
+            <td>{{car.carId}}</td>
+            <td>{{car.brandId}}</td>
+            <td>{{car.colorId}}</td>
+            <td>{{car.minFindexScore}}</td>
+            <td>{{car.modelYear}}</td>
+            <td>{{car.dailyPrice}}</td>
+            <td>{{car.description}}</td>
+            
+        </tr>
+    </tbody>
+</table>
+<hr>
+<div class="col-md-12">
+    
+        <button (click)="delete()" class="btn btn-filled btn-outline-danger btn-dark float-end">Delete</button>
+        <button routerLink="/carupdate" class="btn btn-filled btn-outline-info btn-dark">Get Back</button>
+   
+</div>
+

@@ -28,6 +28,8 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
 import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
 import { DeleteCarImageComponent } from './components/car/car-update/car-image-options/delete-car-image/delete-car-image.component';
+import { CarUpdateFormComponent } from './components/car/car-update/car-update-form/car-update-form.component';
+import { CarDeleteComponent } from './components/car/car-delete/car-delete.component';
 
 const routes: Routes = [
   {path:"", component:WelcomePageComponent},
@@ -55,7 +57,9 @@ const routes: Routes = [
   {path:"carupdate",component:CarUpdateComponent},
   {path:"carimageoptions/:carId",component:CarImageOptionsComponent},
   {path:"carimageoptions/addcarimage/:carId",component:AddCarImageComponent},
-  {path:"carimageoptions/deletecarimage/:carId",component:DeleteCarImageComponent}
+  {path:"carimageoptions/deletecarimage/:carId",component:DeleteCarImageComponent},
+  {path:"carupdate/:carId",component:CarUpdateFormComponent},
+  {path:"cardelete/:carId", component:CarDeleteComponent}
   
 ];
 

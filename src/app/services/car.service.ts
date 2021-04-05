@@ -57,5 +57,19 @@ export class CarService {
   deleteCarImageById(carImageId:number):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"carImages/delete/?carImageId="+carImageId,carImageId);
   }
+  update(car:Car):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/update",car);
+  }
+
+  getCarById(id:number):Observable<SingleResponseModel<Car>>{
+    let newPath= this.apiUrl+"cars/getbyid?id="+id;
+    return this.httpClient.get<SingleResponseModel<Car>>(newPath);
+  }
+
+  delete(car:Car):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/delete",car);
+  }
+
+  
 
 }
