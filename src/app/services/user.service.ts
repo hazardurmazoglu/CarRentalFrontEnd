@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListResponseModel } from '../models/listResponseModel';
+import { OperationClaim } from '../models/operationClaim';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { User } from '../models/user';
@@ -30,9 +31,14 @@ export class UserService {
     return this.httpClient.post<ResponseModel>(newPath,user);
   }
 
-  getClaims(user:User):Observable<SingleResponseModel<User>>{
+  getClaims(user:User):Observable<ListResponseModel<OperationClaim>>{
     let newPath= this.apiUrl+"users/getclaims";
-    return this.httpClient.get<SingleResponseModel<User>>(newPath)
+    return this.httpClient.get<ListResponseModel<OperationClaim>>(newPath,)
+  }
+
+  getUserClaims(id:number):Observable<ListResponseModel<OperationClaim>>{
+    let newPath= this.apiUrl+"users/getuserclaims?id="+id;
+    return this.httpClient.get<ListResponseModel<OperationClaim>>(newPath)
   }
   getAllUsers():Observable<ListResponseModel<User>>{
     let newPath= this.apiUrl+"users/getall";

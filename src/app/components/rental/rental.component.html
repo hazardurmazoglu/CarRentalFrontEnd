@@ -389,7 +389,7 @@
                 >
                   <div>
                     <h6 class="my-0">{{ carDetailInfo.description }}</h6>
-                    <small class="text-muted">Brief description</small>
+                    <small class="text-muted">Daily Price</small>
                   </div>
                   <span class="text-muted"
                     >{{ carDetailInfo.dailyPrice | vatAdded: 8 | currency }}
@@ -404,9 +404,9 @@
                   </div>
                   <span class="text-success">−$5</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between">
+                <li *ngIf="amount>1" class="list-group-item d-flex justify-content-between">
                   <span>Total (USD)</span>
-                  <strong>?</strong>
+                  <strong >Calculated Price : {{amount | currency}}</strong>
                 </li>
               </ul>
 
@@ -417,7 +417,7 @@
                     class="form-control"
                     placeholder="Promo code"
                   />
-                  <button type="submit" class="btn btn-secondary">
+                  <button (click)="coupon()" type="submit" class="btn btn-secondary">
                     Redeem
                   </button>
                 </div>
@@ -460,6 +460,11 @@
                       />
                     </div>
                   </div>
+
+                  <button  style="margin-left: 10px;" (click)="totalPayment()" type="button" class="w-50 btn btn-success btn-lg">
+                    Calculate Price
+                  </button>
+                  
                 </div>
                 <br />
                 <hr />
@@ -534,7 +539,24 @@
                 <hr class="my-4" />
 
                 <h4 class="mb-3">Payment</h4>
+                <button  style="margin-left: 0px;" (click)="getCardByUser()" type="button" class="w-25 btn btn-success ">
+                  Get Saved Cards
+                  
+                </button>
+                
+                <div *ngIf="creditCards.length>0" class="mb-3" style="width: 12rem;">
+                  <br>
+                  <label for="customerCards">Your Credit Cards</label>
+                  <select class="form-control" (ngModelChange)="setCardInfos()" required
+                    id="userCard" name="userCard">
+                    <option *ngFor="let card of creditCards" [value]="card.creditCardId" class="form-control">{{card.cardNumber}}
+                    </option>
+                  </select>
+                </div>
 
+                
+              <form [style.display]="hid" >
+                
                 <div class="my-3">
                   <div class="form-check">
                     <input
@@ -563,109 +585,44 @@
                     
                   </div>
                 </div>
-                <!-- <form [formGroup]="creditCardAddForm">
-                <div class="row gy-3">
-                  <div class="col-md-6">
-                    <label for="cc-name" class="form-label">Name on card</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-name"
-                      placeholder=""
-                      formControlName="nameOnTheCard"
-                    />
-                    
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="cc-number" class="form-label"
-                      >Credit card number</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-number"
-                      placeholder=""
-                      formControlName="cardNumber"
-                    />
-                    <div class="invalid-feedback">
-                      Credit card number is required
-                    </div>
-                  </div>
-
-                  <div class="col-md-3">
-                    <label for="cc-expiration" class="form-label"
-                      >Expiration</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-expiration"
-                      placeholder="  /  "
-                      formControlName="expiration"
-                    />
-                    <div class="invalid-feedback">Expiration date required</div>
-                  </div>
-
-                  <div class="col-md-3">
-                    <label for="cc-cvv" class="form-label">CVV</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-cvv"
-                      placeholder=""
-                      formControlName="cvv"
-                    />
-                    <div class="invalid-feedback">Security code required</div>
-                  </div>
-                  <div class="form-check">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="save-info"
-                    />
-                    <label class="form-check-label" for="save-info"
-                      >Save this information for next time</label
-                    >
-                    
-                  </div>
-                  
-                </div>
-              </form> -->
-              <form [formGroup]="creditCardAddForm">
-                <div *ngIf="creditCards.length>0" class="mb-3" style="width: 12rem;">
-                  <label for="customerCards">Your Credit Cards</label>
-                  <select class="form-control" (ngModelChange)="setCardInfos()" formControlName="userCard" required
-                    id="userCard" name="userCard">
-                    <option *ngFor="let card of creditCards" [value]="card.creditCardId" class="form-control">{{card.cardNumber}}
-                    </option>
-                  </select>
-                </div>
+               
         
                 <div class="form-floating mb-3">
-                  <input type="text" id="nameOnTheCard" class="form-control" placeholder="nameOnTheCard"
-                    formControlName="nameOnTheCard">
+                    <input
+                        class="form-control"
+                        type="text"
+                        [(ngModel)]="nameOnTheCard"
+                        [ngModelOptions]="{standalone: true}"
+                        
+                      />
                   <label for="nameOnTheCard">Name on the Card</label>
                 </div>
         
                 <div class="form-floating mb-3">
-                  <input type="text" id="cardNumber" class="form-control" placeholder="cardNumber" formControlName="cardNumber">
+                  <input type="text" id="cardNumber" class="form-control" placeholder="cardNumber" [(ngModel)]="cardNumber"
+                  [ngModelOptions]="{standalone: true}">
                   <label for="cardNumber">Card Number</label>
                 </div>
         
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-floating mb-3">
-                      <input type="text" id="expiration" class="form-control" placeholder="expiration"
-                        formControlName="expiration">
+                      <input  type="text" id="expiration" class="form-control" placeholder="expiration"
+                      [(ngModel)]="expiration"
+                      [ngModelOptions]="{standalone: true}">
                       <label for="expirationDate">Expiration</label>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-floating mb-3">
-                      <input type="text" id="cvv" class="form-control" placeholder="cvv" formControlName="cvv">
+                      <input type="number" id="cvv" class="form-control" placeholder="cvv" [(ngModel)]="cvv"
+                      [ngModelOptions]="{standalone: true}">
                       <label for="cvv">CVV</label>
                     </div>
+                  </div>
+                  <div class="form-check">
+                    <button (click)="createCard()" type="button" class="btn btn-success">Save Card</button>
+                    
                   </div>
                   <div class="icons">
                     <img src="https://img.icons8.com/color/48/000000/visa.png" />
@@ -673,6 +630,7 @@
                     <img src="https://img.icons8.com/color/48/000000/maestro.png" />
                   </div>
                 </div>
+                
         
                 <!-- payment -->
         
@@ -711,21 +669,16 @@
                               [value]="amount | currency" />
                           </div>
                         </div>
-               
-
-
-                
+                        
                       </div>
-                
-                
+         
                       <div class="modal-footer">
-                        <button  style="margin-right: 315px;" data-bs-dismiss="modal" routerLink="/rental/car/{{carDetailInfo.carId}}" type="button" class="btn btn-outline-danger">
+                        <button  style="margin-right: 300px;" data-bs-dismiss="modal" routerLink="/rental/car/{{carDetailInfo.carId}}" type="button" class="btn btn-outline-danger">
                           Get Back
                         </button>
-                        <button data-bs-dismiss="modal" (click)="rent()" type="button" class="btn btn-outline-success float-end">
+                        <button  data-bs-dismiss="modal" (click)="rent()" type="button" class="btn btn-outline-success float-end">
                           Rent
                         </button>
-
                       </div>
                 
                       

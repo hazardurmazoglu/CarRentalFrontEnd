@@ -21,7 +21,6 @@ export class NaviComponent implements OnInit {
   }
 
   isAuthenticated(){
-    console.log("naviloop")
     if(this.authService.isAuthenticated()){
       this.logout="#";
       return this.login ="none";
@@ -35,6 +34,7 @@ export class NaviComponent implements OnInit {
   logOut(){
     this.localStorageService.removeItem("token");
     this.localStorageService.removeItem("email");
+    this.localStorageService.removeItem("admin");
     this.logout="none";
     this.login ="#"
 

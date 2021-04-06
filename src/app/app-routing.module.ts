@@ -25,11 +25,13 @@ import { RentalComponent } from './components/rental/rental.component';
 import { UserinfoComponent } from './components/user/userinfo/userinfo.component';
 import { UserupdateComponent } from './components/user/userupdate/userupdate.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
-import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
 import { DeleteCarImageComponent } from './components/car/car-update/car-image-options/delete-car-image/delete-car-image.component';
 import { CarUpdateFormComponent } from './components/car/car-update/car-update-form/car-update-form.component';
 import { CarDeleteComponent } from './components/car/car-delete/car-delete.component';
+import { AdminGuard } from './guards/admin.guard';
+import { GratitudeComponent } from './components/gratitude/gratitude.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path:"", component:WelcomePageComponent},
@@ -39,27 +41,29 @@ const routes: Routes = [
   {path:"cars/carinfo/:carId",component:CarInfoComponent},
   {path:"cars/brand/:brandId/color/:colorId",component:CarComponent},
   {path:"rental/car/:carId",component:RentalComponent},
-  {path:"addcar",component:CarAddComponent, canActivate:[LoginGuard]},
+  {path:"addcar",component:CarAddComponent, canActivate:[LoginGuard,AdminGuard]},
   {path:"brands",component:BrandComponent},
   {path:"colors",component:ColorComponent},
-  {path:"addbrand",component:BrandAddComponent, canActivate:[LoginGuard]},
-  {path:"addcolor",component:ColorAddComponent, canActivate:[LoginGuard]},
+  {path:"addbrand",component:BrandAddComponent, canActivate:[LoginGuard,AdminGuard]},
+  {path:"addcolor",component:ColorAddComponent, canActivate:[LoginGuard, AdminGuard]},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"userinfo/:email",component:UserinfoComponent},
   {path:"userinfo/update/:id",component:UserupdateComponent},
-  {path:"admin",component:AdminComponent},
-  {path:"colorupdate",component:ColorUpdateComponent},
-  {path:"colorupdate/:colorId",component:ColorUpdateFormComponent},
-  {path:"admin/allcustomers",component:CustomerComponent},
-  {path:"brandupdate",component:BrandUpdateComponent},
-  {path:"brandupdate/:brandId",component:BrandUpdateFormComponent},
-  {path:"carupdate",component:CarUpdateComponent},
-  {path:"carimageoptions/:carId",component:CarImageOptionsComponent},
-  {path:"carimageoptions/addcarimage/:carId",component:AddCarImageComponent},
-  {path:"carimageoptions/deletecarimage/:carId",component:DeleteCarImageComponent},
-  {path:"carupdate/:carId",component:CarUpdateFormComponent},
-  {path:"cardelete/:carId", component:CarDeleteComponent}
+  {path:"admin",component:AdminComponent, canActivate:[AdminGuard]},
+  {path:"colorupdate",component:ColorUpdateComponent, canActivate:[AdminGuard]},
+  {path:"colorupdate/:colorId",component:ColorUpdateFormComponent, canActivate:[AdminGuard]},
+  {path:"admin/allcustomers",component:CustomerComponent, canActivate:[AdminGuard]},
+  {path:"brandupdate",component:BrandUpdateComponent, canActivate:[AdminGuard]},
+  {path:"brandupdate/:brandId",component:BrandUpdateFormComponent, canActivate:[AdminGuard]},
+  {path:"carupdate",component:CarUpdateComponent, canActivate:[AdminGuard]},
+  {path:"carimageoptions/:carId",component:CarImageOptionsComponent, canActivate:[AdminGuard]},
+  {path:"carimageoptions/addcarimage/:carId",component:AddCarImageComponent, canActivate:[AdminGuard]},
+  {path:"carimageoptions/deletecarimage/:carId",component:DeleteCarImageComponent, canActivate:[AdminGuard]},
+  {path:"carupdate/:carId",component:CarUpdateFormComponent, canActivate:[AdminGuard]},
+  {path:"cardelete/:carId", component:CarDeleteComponent, canActivate:[AdminGuard]},
+  {path:"thanks",component:GratitudeComponent},
+  {path:'**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
   
 ];
 

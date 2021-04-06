@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms"
+import {FormGroup, FormBuilder, FormControl, Validators, FormsModule} from "@angular/forms"
 import { CarDetail } from 'src/app/models/cardetail';
 import { CarImage } from 'src/app/models/carImage';
 import { UserService } from 'src/app/services/user.service';
@@ -35,7 +35,6 @@ export class RentalComponent implements OnInit {
   imagePathCheckOut="./assets/checkout.png"
   dataLoaded=false;
   email:string;
-  creditCardAddForm:FormGroup;
   cardNumber: string;
   nameOnTheCard: string;
   expiration: string;
@@ -43,6 +42,8 @@ export class RentalComponent implements OnInit {
   cardId: number;
   amount: number;
   creditCards: CreditCard[] = [];
+
+  hid="#";
 
 
   userId: number;
@@ -65,11 +66,9 @@ export class RentalComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       if(params["carId"]){
         this.getEmail();
+        this.getByEmail(this.email);
         this.getCarDetail(params["carId"]);
         this.getCarImagesById(params["carId"]);
-        this.getByEmail(this.email);
-        this.createCreditCardAddForm();
-        this.getCardByUser();
 
       }
     })
@@ -86,7 +85,6 @@ export class RentalComponent implements OnInit {
     this.payment();
     this.createRental();
     
-    
   }
 
   createRental() {
@@ -99,6 +97,7 @@ export class RentalComponent implements OnInit {
     }
     this.rentalService.add(rental).subscribe(repsonse=>{
       this.toastrService.success("Successfully booked.")
+      this.router.navigate(["thanks"])
     },error=>{
       console.info(error)
       this.toastrService.error(error.error)
@@ -106,15 +105,24 @@ export class RentalComponent implements OnInit {
     })
   }
 
-  createCreditCardAddForm() {
-    this.creditCardAddForm = this.formBuilder.group({
-      customerCards: ["", Validators.required],
-      nameOnTheCard: ["", Validators.required,Validators.maxLength(20)],
-      cardNumber: ["", Validators.required,Validators.maxLength(16)],
-      cvv: ["", Validators.required,Validators.maxLength(3)],
-      expiration: ["", Validators.required,Validators.maxLength(5)],
-    });
+  createCard(){
+    let card: CreditCard =
+    {
+      cardNumber: this.cardNumber,
+      expiration:this.expiration,
+      cvv:this.cvv,
+      userId:this.user.id,
+      nameOnTheCard:this.nameOnTheCard
+    }
+    this.creditCardService.add(card).subscribe(response=>{
+      this.toastrService.success("Successfully saved.")
+    },error=>{
+      console.info(error)
+      this.toastrService.error("Cannot be null")
+    })
   }
+
+
 
   getCarDetail(carId:number){
     this.carService.getCarDetail(carId).subscribe(response=>{
@@ -160,21 +168,6 @@ export class RentalComponent implements OnInit {
     }
   }
 
-  save() {
-    let cardModel: CreditCard = {
-      cardNumber: this.cardNumber,
-      nameOnTheCard: this.nameOnTheCard,
-      expiration: this.expiration,
-      cvv: this.cvv,
-      userId: this.user.id
-    };
-    this.creditCardService.add(cardModel).subscribe((response) => {
-      this.toastrService.success('SAVE OK');
-      this.payment();
-    },responseError => {
-      this.toastrService.error('ERRORR',responseError.error);
-    });
-  }
   payment() {
       let paymentModel: Payment = {
         amount: this.amount
@@ -187,26 +180,29 @@ export class RentalComponent implements OnInit {
    
   }
   setCardInfos() {
-    this.creditCardAddForm.patchValue({
-      cardNumber: this.cardNumber,
-      nameOnTheCard: this.nameOnTheCard,
-      expirationDate: this.expiration,
-      cvv: this.cvv,
-    });
+    // this.creditCardAddForm.patchValue({
+    //   cardNumber: this.cardNumber,
+    //   nameOnTheCard: this.nameOnTheCard,
+    //   expirationDate: this.expiration,
+    //   cvv: this.cvv,
+    // });
+    console.log(this.cardNumber)
   }
 
   getCardByUser(){
-    this.creditCardService.getByUserId(this.user.id).subscribe(response => {
-      this.creditCards = response.data;
-      this.creditCards.forEach(response => {
-        this.cardNumber = response.cardNumber;
-        this.nameOnTheCard = response.nameOnTheCard;
-        this.expiration = response.expiration;
-        this.cvv = response.cvv;
+    this.getByEmail(this.email);
+      this.creditCardService.getByUserId(this.user.id).subscribe(response => {
+        this.creditCards = response.data;
+        this.hid="none";
+        console.log(this.hid)
+      },responseError=>{
+        this.toastrService.error("Can't get cards")
       });
 
-    });
-  }
+    }
+    
+  
+  
   totalPayment() {
     
     let dateRent = new Date(this.rentDate.toString());
@@ -221,6 +217,10 @@ export class RentalComponent implements OnInit {
       
     
     
+  }
+
+  coupon(){
+    this.toastrService.info("Do you really have promo code?")
   }
 
 
