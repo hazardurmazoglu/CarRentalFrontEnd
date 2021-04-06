@@ -31,6 +31,7 @@ export class CarAddComponent implements OnInit {
       this.carService.add(carModel).subscribe(response=>{
 
       this.toastrService.success(response.message,"Succeed")
+      this.toastrService.info("Don't forget to add preview photo!")
       }, responseError=>{
         if(responseError.error.Errors.length>0){
           for (let i = 0; i < responseError.error.Errors.length; i++) {

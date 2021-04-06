@@ -6,6 +6,7 @@ export interface Car{
     dailyPrice:number;
     description:string;
     minFindexScore?:number;
+    previewPath?:string;
     
 
 }

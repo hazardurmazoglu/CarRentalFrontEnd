@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-8">
             <br>
-         <table class="table m-2">
+         <!-- <table class="table m-2">
              <thead>
                     <tr>
                         
@@ -24,7 +24,7 @@
              </thead>
              <tbody>    
                     <tr *ngFor="let carDetail of carDetails">
-                        <td><img [src]="imagePathLogo" alt="Photo"></td>
+                        <td><img src="{{imageUrl}}{{carDetail.previewPath}}" style="width: 120px; height: 60px;" alt="Photo"></td>
                         <td>{{carDetail.description}}</td>
                         <td>{{carDetail.brandName}}</td>
                         <td>{{carDetail.colorName}}</td>
@@ -36,7 +36,28 @@
                             </button>
                     </tr>
              </tbody>
-         </table>
+         </table> -->
+
+         <div class="row">
+            <div *ngFor="let carDetail of carDetails" class="card" style="width: 26rem;">
+                
+                <img src="{{imageUrl}}{{carDetail.previewPath}}" style="width: 390px; height: 200px;" alt="Photo">
+                <div class="card-body">
+                  <h5 class="card-title">{{carDetail.description}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{carDetail.brandName}}</li>
+                  <li class="list-group-item">{{carDetail.colorName}}</li>
+                  <li class="list-group-item">{{carDetail.modelYear}}</li>
+                </ul>
+                <div class="card-body">
+                  <button  routerLink="/cars/carinfo/{{carDetail.carId}}" class="btn btn-lg"> > Details</button>
+                </div>
+                
+              </div>
+              
+        
+        </div>
         </div>
     </div>
 </div>

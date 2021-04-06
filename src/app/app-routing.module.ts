@@ -32,6 +32,7 @@ import { CarDeleteComponent } from './components/car/car-delete/car-delete.compo
 import { AdminGuard } from './guards/admin.guard';
 import { GratitudeComponent } from './components/gratitude/gratitude.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AddUpdatePreviewComponent } from './components/car/car-update/car-image-options/add-update-preview/add-update-preview.component';
 
 const routes: Routes = [
   {path:"", component:WelcomePageComponent},
@@ -63,7 +64,8 @@ const routes: Routes = [
   {path:"carupdate/:carId",component:CarUpdateFormComponent, canActivate:[AdminGuard]},
   {path:"cardelete/:carId", component:CarDeleteComponent, canActivate:[AdminGuard]},
   {path:"thanks",component:GratitudeComponent},
-  {path:'**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
+  {path:"carupdate/previewimage/:carId",component:AddUpdatePreviewComponent, canActivate:[AdminGuard]},
+  {path:'**', component: PageNotFoundComponent }  // Wildcard route for a 404 page
   
 ];
 

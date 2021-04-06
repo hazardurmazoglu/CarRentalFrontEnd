@@ -43,6 +43,7 @@ import { DeleteCarImageComponent } from './components/car/car-update/car-image-o
 import { CarDeleteComponent } from './components/car/car-delete/car-delete.component';
 import { GratitudeComponent } from './components/gratitude/gratitude.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AddUpdatePreviewComponent } from './components/car/car-update/car-image-options/add-update-preview/add-update-preview.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     DeleteCarImageComponent,
     CarDeleteComponent,
     GratitudeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AddUpdatePreviewComponent
   ],
   imports: [
     BrowserModule,

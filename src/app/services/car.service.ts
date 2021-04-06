@@ -70,6 +70,27 @@ export class CarService {
     return this.httpClient.post<ResponseModel>(this.apiUrl+"cars/delete",car);
   }
 
+  uploadImage(image: File,car:Car):Observable<any> {
+
+    console.log(image.name)
+    const formData:FormData = new FormData();
+
+    formData.append('Image', image);
+    formData.append('CarId',car.carId.toString());
+    formData.append('BrandId', car.brandId.toString());
+    formData.append('ColorId',car.colorId.toString());
+    formData.append('MinFindexScore',car.minFindexScore.toString());
+    formData.append('ModelYear',car.modelYear.toString());
+    formData.append('DailyPrice',car.dailyPrice.toString());
+    formData.append('Description',car.description.toString());
+
+    let newPath=this.apiUrl+'cars/addPreviewPhoto';
+    return this.httpClient.post<ResponseModel>(newPath,formData,{
+      reportProgress: true,
+      responseType: 'json',
+    });
+    
+  }
   
 
 }
