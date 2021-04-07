@@ -33,6 +33,8 @@ import { AdminGuard } from './guards/admin.guard';
 import { GratitudeComponent } from './components/gratitude/gratitude.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddUpdatePreviewComponent } from './components/car/car-update/car-image-options/add-update-preview/add-update-preview.component';
+import { AllRentalsComponent } from './components/rental/all-rentals/all-rentals.component';
+import { MyrentalsComponent } from './components/rental/myrentals/myrentals.component';
 
 const routes: Routes = [
   {path:"", component:WelcomePageComponent},
@@ -65,6 +67,8 @@ const routes: Routes = [
   {path:"cardelete/:carId", component:CarDeleteComponent, canActivate:[AdminGuard]},
   {path:"thanks",component:GratitudeComponent},
   {path:"carupdate/previewimage/:carId",component:AddUpdatePreviewComponent, canActivate:[AdminGuard]},
+  {path:"allrentals",component:AllRentalsComponent, canActivate:[AdminGuard]},
+  {path:"myrentals",component:MyrentalsComponent,canActivate:[LoginGuard]},
   {path:'**', component: PageNotFoundComponent }  // Wildcard route for a 404 page
   
 ];

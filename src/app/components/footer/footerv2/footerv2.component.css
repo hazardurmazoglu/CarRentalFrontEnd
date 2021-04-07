@@ -8276,3 +8276,31 @@
       color: rgba(255, 255, 255, 0.8); }
     .footer-03 .ftco-footer-social li a {
       color: #f17e7e; }
+
+      /* Style all font awesome icons */
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-instagram {
+  
+  color: white;
+}
+
+/* Twitter */
+.fa-linkedin {
+  
+  color: white;
+}

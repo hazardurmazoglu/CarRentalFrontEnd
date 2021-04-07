@@ -49,6 +49,8 @@ import { FilterBrandPipePipe } from './pipes/filter-brand-pipe.pipe';
 import { FilterColorPipePipe } from './pipes/filter-color-pipe.pipe';
 import { ColorFilterComponent } from './components/color/color-filter/color-filter.component';
 import { Footerv2Component } from './components/footer/footerv2/footerv2.component';
+import { AllRentalsComponent } from './components/rental/all-rentals/all-rentals.component';
+import { MyrentalsComponent } from './components/rental/myrentals/myrentals.component';
 
 
 @NgModule({
@@ -92,7 +94,9 @@ import { Footerv2Component } from './components/footer/footerv2/footerv2.compone
     FilterBrandPipePipe,
     FilterColorPipePipe,
     ColorFilterComponent,
-    Footerv2Component
+    Footerv2Component,
+    AllRentalsComponent,
+    MyrentalsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<br>
+<h2 style="font-style: italic; color: #dc3545;" >My Rentals</h2>
+<br>
+<table style="border: #dc3545;"class="table table-light table-striped">
+    <thead>
+        <tr>
+            
+            <th>Car Description</th>
+            <th>Brand Name</th>
+            <th>Rent Date</th>
+            <th>Return Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rentalDetail of rentalDetails">
+                    <td>{{rentalDetail.description}}</td>
+                    <td>{{rentalDetail.brandName}}</td>
+                    <td>{{rentalDetail.rentDate}}</td>
+                    <td>{{rentalDetail.returnDate}}</td>   
+        </tr>    
+    </tbody>
+</table>
+<button routerLink="" class="btn float-end">Get Back</button>

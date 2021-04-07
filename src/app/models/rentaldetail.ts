@@ -3,6 +3,7 @@ export interface RentalDetail{
     carId:number;
     userName:string;
     brandName:string;
+    description:string;
     rentDate:Date;
     returnDate:Date;
 }

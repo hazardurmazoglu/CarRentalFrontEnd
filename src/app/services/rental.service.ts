@@ -6,6 +6,7 @@ import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
 import { RentalDetail } from '../models/rentaldetail';
 import { ResponseModel } from '../models/responseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,14 @@ export class RentalService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getRental():Observable<ListResponseModel<RentalDetail>>{
+  getRentalDetails():Observable<ListResponseModel<RentalDetail>>{
     let newPath=this.apiUrl+"rentals/getrentaldetails";
     return this.httpClient.get<ListResponseModel<RentalDetail>>(newPath)
+  }
+
+  getRentalDetailsByUserId(id:number):Observable<ListResponseModel<RentalDetail>>{
+    let newPath=this.apiUrl+"rentals/getrentaldetailsbyuserid?id="+id;
+    return this.httpClient.get<ListResponseModel<RentalDetail>>(newPath);
   }
   add(rental:Rental):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+'rentals/add',rental);
