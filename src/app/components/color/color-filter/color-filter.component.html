@@ -1,0 +1,42 @@
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-info m-2"
+  role="status"
+></div>
+
+<div class="m-3">
+  <label for="exampleFormControlInput1" class="form-label" style="color:black; font-size: large;">Search via Color</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" style="border-radius: 10px; border-color: black;" placeholder="Color..">
+</div>
+<div *ngIf="filterText.length>2" class="alert-danger m-2">
+  {{filterText}} searching...
+</div>
+
+<ul 
+  *ngIf="dataLoaded == true" 
+  class="list-group list-group-flush m-4">
+  
+<h4 class="ps-2"
+   style="background-color:white; color:#dc3545; border-radius: 88px; height: 32px; text-align: center;">
+  Colors
+</h4> 
+  
+<li
+    (click)="setCurrentColor(color)"
+    routerLink = "/cars/color/{{color.colorId}}"
+    *ngFor="let color of colors | filterColorPipe:filterText"
+    [class]="getColorClass(color)" style="background: white; color:black; "
+  >
+    {{ color.colorName }}
+  </li>
+  <br>
+  <button
+  routerLink="/cars"
+  (click)="clearFilter()"
+  type="button"
+  aria-current="true"
+  class="btn btn-light btn-outline-danger"
+>
+  Clear Filter
+</button>
+</ul>

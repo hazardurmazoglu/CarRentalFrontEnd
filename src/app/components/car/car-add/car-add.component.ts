@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Brand } from 'src/app/models/brand';
+import { Color } from 'src/app/models/color';
+import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-car-add',
@@ -10,10 +14,16 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarAddComponent implements OnInit {
   carAddForm:FormGroup;
-  constructor(private toastrService:ToastrService, private formBuilder:FormBuilder, private carService:CarService) { }
+  colors:Color[]=[];
+  brands:Brand[]=[]
+
+  constructor(private toastrService:ToastrService, private formBuilder:FormBuilder, private carService:CarService,
+    private colorService:ColorService, private brandService:BrandService) { }
 
   ngOnInit(): void {
     this.createCarAddForm();
+    this.getColors();
+    this.getBrands();
   }
 
   createCarAddForm(){
@@ -22,6 +32,7 @@ export class CarAddComponent implements OnInit {
       colorId:["",Validators.required],
       modelYear:["",Validators.required],
       dailyPrice:["",Validators.required],
+      minFindexScore:["",Validators.required],
       description:[""]
     })
   }
@@ -47,6 +58,17 @@ export class CarAddComponent implements OnInit {
     }
     
     
+  }
+
+  getColors(){
+    this.colorService.getColors().subscribe(response=>{
+    this.colors=response.data;
+    })
+  }
+  getBrands(){
+    this.brandService.getBrands().subscribe(response=>{
+    this.brands=response.data;
+    })
   }
 
 }

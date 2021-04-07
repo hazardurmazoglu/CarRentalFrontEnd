@@ -8,7 +8,7 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h5 style="font-style: italic; font-size: x-large;">{{carDetail.description}}</h5>
                         <p>{{carDetail.description}} will not let you down.</p>
-                        <button (click)="deleteCarImageById(carImage.carImageId)" class="btn-dark btn-outline-danger">Delete This Image</button>
+                        <button (click)="deleteCarImageById(carImage.carImageId)" class="btn">Delete This Image</button>
                       </div>
                   </div>
                 </div>
@@ -54,13 +54,9 @@
                         <td>{{ carDetail.dailyPrice | currency }}</td>
                         <td>{{ carDetail.dailyPrice | vatAdded:8 | currency }}</td>
                         <td>
-                            <button routerLink="/rental/car/{{carDetail.carId}}" type="button" aria-current="true"
-                            class="btn btn-dark btn-outline-info float-end">
-                            Rental Options
-                          </button> 
-                            
+                          
                             <button routerLink="/carimageoptions/{{carDetail.carId}}" type="button" aria-current="true"
-                            class="btn btn-dark btn-outline-warning float-end">
+                            class="btn float-end">
                             Get Back
                             </button>
                         </td>

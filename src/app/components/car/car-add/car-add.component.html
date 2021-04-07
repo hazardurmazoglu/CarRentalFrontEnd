@@ -29,6 +29,12 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label for="minFindexScore">Min. Findex Score</label>
+                        <div class="form-group">
+                            <input type="number" id="minFindexScore" formControlName="minFindexScore" class="form-control" placeholder="Min. Findex Score"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label for="description"> Description</label>
                         <div class="form-group">
                             <input type="text" id="description" formControlName="description" class="form-control" placeholder="Description"/>
@@ -37,9 +43,48 @@
                 </form>
             </div>
             <div class="card-footer">
-                <button (click)="add()" class="btn btn-fill btn-dark btn-outline-info float-end"> Add </button>
-                <button class="btn btn-fill btn-dark btn-outline-danger " routerLink="/admin"> Get Back</button>
+                <button (click)="add()" class="btn  float-end"> Add </button>
+                <button class="btn " routerLink="/admin"> Get Back</button>
             </div> 
+            
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <table style="border:white;" class="table table-dark">
+                    <thead>
+                        <tr >
+                            <th>Brand Id</th>
+                            <th>Brand Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let brand of brands">
+                            <td>{{brand.brandId}}</td>
+                            <td>{{brand.brandName}}</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table style="border:white" class="table table-dark">
+                    <thead>
+                        <tr >
+                            <th>Color Id</th>
+                            <th>Color Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let color of colors">
+                            <td>{{color.colorId}}</td>
+                            <td>{{color.colorName}}</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            
         </div>
     </div>
     

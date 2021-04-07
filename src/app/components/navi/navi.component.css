@@ -17,16 +17,16 @@
   .btn {
     background: white;
     text-decoration: none;
-    border: 1px solid #f4511e;
+    border: 1px solid #dc3545;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
   }
   
   .btn:hover {
-    box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+    box-shadow: 1px 1px 25px 5px #dc3545;
   }
-  
+  /* rgba(146, 148, 248, 0.4) */
   .btn:before {
     content: "";
     position: absolute;
@@ -37,7 +37,7 @@
     background: linear-gradient(
       120deg,
       transparent,
-      rgba(146, 148, 248, 0.4),
+      #dc3545,
       transparent
     );
     transition: all 650ms;

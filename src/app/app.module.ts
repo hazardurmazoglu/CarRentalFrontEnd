@@ -44,6 +44,10 @@ import { CarDeleteComponent } from './components/car/car-delete/car-delete.compo
 import { GratitudeComponent } from './components/gratitude/gratitude.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddUpdatePreviewComponent } from './components/car/car-update/car-image-options/add-update-preview/add-update-preview.component';
+import { BrandFilterComponent } from './components/brand/brand-filter/brand-filter.component';
+import { FilterBrandPipePipe } from './pipes/filter-brand-pipe.pipe';
+import { FilterColorPipePipe } from './pipes/filter-color-pipe.pipe';
+import { ColorFilterComponent } from './components/color/color-filter/color-filter.component';
 
 
 @NgModule({
@@ -82,7 +86,11 @@ import { AddUpdatePreviewComponent } from './components/car/car-update/car-image
     CarDeleteComponent,
     GratitudeComponent,
     PageNotFoundComponent,
-    AddUpdatePreviewComponent
+    AddUpdatePreviewComponent,
+    BrandFilterComponent,
+    FilterBrandPipePipe,
+    FilterColorPipePipe,
+    ColorFilterComponent
   ],
   imports: [
     BrowserModule,

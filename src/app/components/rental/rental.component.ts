@@ -118,7 +118,7 @@ export class RentalComponent implements OnInit {
       this.toastrService.success("Successfully saved.")
     },error=>{
       console.info(error)
-      this.toastrService.error("Cannot be null")
+      this.toastrService.error("This credit card is wrong.")
     })
   }
 
