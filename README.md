@@ -22,7 +22,10 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## About Me
 
+
+[LinkedIn](https://www.linkedin.com/in/hazar-durmazoglu/)
 
 ## Development server
 
