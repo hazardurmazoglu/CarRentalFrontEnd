@@ -14,7 +14,7 @@ Angular / C#, .NET
 *Caching,Loging
 *JWT
 
-**Images from Web Site can be found in "ImagesFromWebsite" folder.
+## Images from Web Site can be found in "ImagesFromWebsite" folder.
 
 
 ## Contributing
